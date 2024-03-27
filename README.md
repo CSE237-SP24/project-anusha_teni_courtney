@@ -33,7 +33,7 @@ Is there anything that you implemented but doesn't currently work?
   Anusha - Not that I know of
   
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!) 
-There are a script.sh files in the account-creation and account-type branch. Scripts still need some work
+There are a script.sh files in the account-creation and account-types branch. Scripts still need some work
 
 ### Future Automation of Script:
 
