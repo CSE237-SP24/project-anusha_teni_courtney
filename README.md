@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This Bank Account Management System is designed to provide a simple simulation of a banking environment. It enables customers to create bank accounts, both checking and savings, and manage their finances by depositing and withdrawing funds. For savings accounts, customers can also view their annual interest rate and the calculated interest on their balance.
+This Bank Account Management System is designed to provide a simple simulation of a banking environment. It enables customers to create bank accounts, both checking and savings that are password protected, and manage their finances by depositing and withdrawing funds. For savings accounts, customers can also view their annual interest rate and the calculated interest on their balance.
 
 ## Features and User Stories
 
@@ -26,6 +26,7 @@ This Bank Account Management System is designed to provide a simple simulation o
 - Transfers between accounts are not yet implemented, which is a high-priority feature for the next iteration.
 - The withdrawal functionality does not currently handle scenarios where an overdraft might occur.
 - Interest calculations are annual, and more frequent compounding options will be considered for future releases.
+- There are some redundancies within the branches account-types and account-creation that will be merged/handled for the future iterations.
 
 Is there anything that you implemented but doesn't currently work? 
   Teni- Not currently 
