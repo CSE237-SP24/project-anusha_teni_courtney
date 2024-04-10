@@ -25,6 +25,10 @@ public class BankAccount {
     public void setPassword(String p){
         this.password = p; 
     }
+	public double getBalance() {
+		return this.balance;
+	}
+
     public void setBalance(int b){
         this.balance = b; 
     }
