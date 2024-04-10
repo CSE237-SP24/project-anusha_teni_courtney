@@ -1,5 +1,7 @@
 #!/bin/bash
 
-#javac command to compile
+cd src
 
-#java to run the code
+javac bankapp/*.java
+
+java bankapp.Menu
