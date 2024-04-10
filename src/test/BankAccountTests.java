@@ -84,18 +84,21 @@ class BankAccountTests {
 	
 	@Test
 	void testNegativeDeposit() {
-		//1. Setup Objects	
-		BankAccount testAccount = new BankAccount();
-		
-		//2. Call the method being tested
-		try {
-			testAccount.deposit(-25);
-			fail();
-		} catch (IllegalArgumentException e) {
-			//we expect to end up here, -25 is a bad input
-			assertTrue(true);
-		}
-	}
+    // 1. Setup Objects    
+    BankAccount testAccount = new BankAccount();
+    
+    // 2. Call the method being tested
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+        testAccount.deposit(-25);
+    });
+    
+    // 3. Use assertions to verify results
+    String expectedMessage = "Amount must be positive";
+    String actualMessage = exception.getMessage();
+    
+    assertTrue(actualMessage.contains(expectedMessage), "Exception message should be about positive amount requirement");
+}
+
 	@Test
     void testMultipleDeposits() {
         BankAccount testAccount = new BankAccount();

@@ -12,12 +12,14 @@ public class BankAccount {
     private char accountType;
 	
 	//Constructors - not tested
-	public BankAccount() {
+        public BankAccount() {
         this.userName = "";
         this.password = "";
-	    this.balance = 0;
-        this.accountType = 'C'; 
-	}
+        this.balance = 0;
+        this.accountType = 'C';
+        this.transactionHistory = new ArrayList<>();
+}
+
 	
 	public void setUserName(String u){
         this.userName = u; 
@@ -72,23 +74,26 @@ public class BankAccount {
 
     
     public void deposit(double amount) {
-        while(amount < 0) {
-            throw new IllegalArgumentException("Amount must be positive");
-        }
-        this.balance += amount;
-	}
+    if(amount < 0) {
+        throw new IllegalArgumentException("Amount must be positive");
+    }
+    this.balance += amount;
+    recordTransaction("Deposited: $" + amount);
+}
+
     public void withdraw(double amount){
-        while(amount < 0){
+        if(amount < 0){
             throw new IllegalArgumentException("Withdrawal amount cannot be negative");
         }
-        if(balance >=amount){
-            balance -= amount; 
+        if(balance >= amount){
+            balance -= amount;
+            recordTransaction("Withdrew: $" + amount);
         }
         else {
             throw new IllegalArgumentException("Insufficient funds");
         }
-
     }
+
     
 
 

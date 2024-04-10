@@ -94,17 +94,15 @@ public class Menu {
 		//may want to update differentiation of rates later
 		return x;
     }
-	public double processInterestRate(){
+	public double processInterestRate(char accountType){
 		if(accountType == 'S'){
 			account.setInterestRate();
 			return account.getInterestRate();
 		}
-		if(accountType == 'C'){
-			return 0.0;
-		}
 		return 0.0;
 	}
-	//Does work - needs tests
+
+	//Account information
 	public void processingAccountDetails(String u, String p, char t, double i) {
 		System.out.println("Your account is initialized with name: " 
         + u + " password: " + p + " and type " + t + " interest rate " + i);
@@ -134,7 +132,7 @@ public class Menu {
 		System.out.println("Your balance is now: " + account.getBalance());
 	}
 
-	//Does work - needs tests
+	//Withdrawls
 	public void processingWithdrawalSelection(double amount) {
 		account.withdraw(amount);
 		transactionHistory.add(new Transaction("Withdrawl", amount));

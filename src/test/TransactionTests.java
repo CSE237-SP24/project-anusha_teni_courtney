@@ -11,17 +11,20 @@ import bankapp.Menu;
 import bankapp.Transaction;
 
 class TransactionTests {
-	@Test
+    
+    @Test
     void testTConstructor() {
-        LocalDateTime currTime = LocalDateTime.now();
+        LocalDateTime beforeCreation = LocalDateTime.now();
         String type = "Deposit";
         double amount = 100.0;
 
         Transaction transaction = new Transaction(type, amount);
+        LocalDateTime afterCreation = LocalDateTime.now();
 
-        assertEquals(type, transaction.getType()); //withdraw or dep
+        assertEquals(type, transaction.getType());
         assertEquals(amount, transaction.getAmount(), 0.01); 
-        assertTrue(currTime.isEqual(transaction.getTimestamp()));
+        assertFalse(transaction.getTimestamp().isBefore(beforeCreation));
+        assertFalse(transaction.getTimestamp().isAfter(afterCreation));
     }
 
     @Test
@@ -44,8 +47,11 @@ class TransactionTests {
 
     @Test
     void testGetTimestamp() {
-        LocalDateTime currTime = LocalDateTime.now();
+        LocalDateTime beforeCreation = LocalDateTime.now();
         Transaction transaction = new Transaction("Deposit", 50.0);
-        assertTrue( currTime.isEqual(transaction.getTimestamp()));
+        LocalDateTime afterCreation = LocalDateTime.now();
+
+        assertFalse(transaction.getTimestamp().isBefore(beforeCreation));
+        assertFalse(transaction.getTimestamp().isAfter(afterCreation));
     }
 }
