@@ -10,8 +10,8 @@ public class Menu {
 
 	private Scanner in;
 	private BankAccount account;
-    private String userName;
-    private String password; 
+        private String userName;
+        private String password; 
 	private char accountType;
 	private double interestRate; // Annual interest rate
 	private List<Transaction> transactionHistory; 
@@ -19,35 +19,35 @@ public class Menu {
 	
 	//not tested
 	public static void main(String[] args) {
-		Menu mainMenu = new Menu();
+	Menu mainMenu = new Menu();
 
-		//username 
-		mainMenu.displayAccountCreationPrompt(); 
-		String userName = mainMenu.getValidUserName();
+	//username 
+	mainMenu.displayAccountCreationPrompt(); 
+	String userName = mainMenu.getValidUserName();
 
-		//password
-		mainMenu.displayPasswordCreationPrompt();
-		String password = mainMenu.getValidPassword();
+	//password
+	mainMenu.displayPasswordCreationPrompt();
+	String password = mainMenu.getValidPassword();
 
-		//savings vs checking
-		mainMenu.displayAccountTypePrompt();
-		char accountType = mainMenu.getValidAccountType();
-		Double rate = mainMenu.processInterestRate();
+	//savings vs checking
+	mainMenu.displayAccountTypePrompt();
+	char accountType = mainMenu.getValidAccountType();
+	Double rate = mainMenu.processInterestRate();
 
-		mainMenu.processingAccountDetails(userName, password, accountType, rate);
+	mainMenu.processingAccountDetails(userName, password, accountType, rate);
 
+	
+	//deposit 
+	mainMenu.depositPrompt();
+	double amountD = mainMenu.getValidDepositInput();
+	mainMenu.processingDepositSelection(amountD);
+
+	//withdraw
+	mainMenu.withdrawPrompt();
+	double amountW = mainMenu.getValidWithdrawalInput();
+	mainMenu.processingWithdrawalSelection(amountW);
+	mainMenu.displayTransactionHistory();
 		
-		//deposit 
-		mainMenu.depositPrompt();
-		double amountD = mainMenu.getValidDepositInput();
-		mainMenu.processingDepositSelection(amountD);
-
-		//withdraw
-		mainMenu.withdrawPrompt();
-		double amountW = mainMenu.getValidWithdrawalInput();
-		mainMenu.processingWithdrawalSelection(amountW);
-		mainMenu.displayTransactionHistory();
-			
 	}
 	
 	//Constructor
@@ -56,8 +56,8 @@ public class Menu {
 		this.account = new BankAccount();
 		this.transactionHistory = new ArrayList<Transaction>();
 
-        account.setUserName(userName);
-        account.setPassword(password);
+	        account.setUserName(userName);
+	        account.setPassword(password);
 		account.setAccountType(accountType);
 	}
 
