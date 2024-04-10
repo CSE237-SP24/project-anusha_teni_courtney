@@ -35,6 +35,8 @@ The Bank Application is designed to manage user accounts effectively. It allows 
 ## Currently Unimplemented Features
 - **Interest Application**: Currently, the system assigns an interest rate to savings accounts but does not automatically apply calculated interest to the account balance.
 - **Transfer Functionality**: While the transfer feature is implemented and functional, edge cases and error handling could be further refined.
+- Need to make sure transaction history always works correctly
+- Need to erify that interest rate generator is truly random
 
 ## Is there anything that you implemented but doesn't currently work? 
   - Teni- Not currently
