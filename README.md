@@ -1,6 +1,4 @@
-# base-project
-## Bank Account Management System
-
+# Bank Account Management System
 ## Iteration 2 
 
 ## Description
