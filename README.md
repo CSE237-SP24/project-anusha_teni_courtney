@@ -76,9 +76,9 @@ chmod +x run.sh
 
 
 
-### Iteration 1 Information:
+## Iteration 1 Information:
 
-## Completed in This Iteration:
+### Completed in This Iteration:
 
 - **Account Creation**: Customers can now create a bank account, which can be either a checking or a savings account, each with a unique account number. (Anusha/Teni)
 - **Deposit Funds**: Functionality to deposit money into accounts has been provided. This allows customers to increase their account balances by the specified amounts. (starter code + Courtney)
@@ -86,14 +86,14 @@ chmod +x run.sh
 - **Withdraw Funds**: Customers can withdraw money from their accounts, given that they have sufficient funds available. (Courtney)
 - **Interest Calculation**: Savings account holders can view the annual interest rate applicable to their accounts and calculate the interest based on their current balance. (Anusha)
 
-## Planned for Next Iteration:
+### Planned for Next Iteration:
 
 - Implementing funds transfer between accounts. (Courtney)
 - Introducing monthly statements that summarize account activity. (Anusha)
 - Adding joint account features allowing multiple users to manage a single account. (Anusha)
 - The user should be able to open a credit card, and the an investment account (Teni)
 
-## Current Limitations
+### Current Limitations
 
 - Transfers between accounts are not yet implemented, which is a high-priority feature for the next iteration.
 - The withdrawal functionality does not currently handle scenarios where an overdraft might occur.
