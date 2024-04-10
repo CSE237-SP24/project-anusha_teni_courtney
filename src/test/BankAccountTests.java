@@ -74,20 +74,20 @@ class BankAccountTests {
             fail("Unexpected IllegalArgumentException was thrown");
         }
    
-    //deposit tests
-	@Test
-	void testSimpleDeposit() {
-		//1. Setup Objects
-		
-		BankAccount testAccount = new BankAccount();
-		
-		//2. Call the method being tested
-		testAccount.deposit(25);
-		
-		//3. Use assertions to verify results
-		assertEquals(25.0, testAccount.getBalance(), 0.01);	
-	}
-	
+   //deposit tests
+    @Test
+    void testSimpleDeposit() {
+        //1. Setup Objects
+        
+        BankAccount testAccount = new BankAccount();
+        
+        //2. Call the method being tested
+        testAccount.deposit(25);
+        
+        //3. Use assertions to verify results
+        assertEquals(25.0, testAccount.getBalance(), 0.01);	
+    }
+    
     @Test
 	void testNegativeDeposit() {
     // 1. Setup Objects    
