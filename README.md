@@ -27,22 +27,21 @@ The Bank Application is designed to manage user accounts effectively. It allows 
 - Combined all previous functions for entire team from last iteration, added additional interest and account type functionality to reflect our new file structure. - Teni
 - Add transfer functionality - Anusha
 - Write test cases for combined files - Anusha/Courtney
-- User can choose between a savings or checking account.
-- Fund Transfers: Added the ability for users to transfer funds between accounts.
+- Fund Transfers: Added the ability for users to transfer funds between accounts. - Anusha
 
 ## User Stories for Next Iteration
 - Finish opening up a credit card, and the tests, help teammates if they're stuck on a story. - Teni
 - Updating the script.sh files for execution - Courtney
 - Transfering funds between users - Anusha
 
-## Currently Unimplemented or Non-Working Features
+## Currently Unimplemented Features
 - **Interest Application**: Currently, the system assigns an interest rate to savings accounts but does not automatically apply calculated interest to the account balance.
 - **Transfer Functionality**: While the transfer feature is implemented and functional, edge cases and error handling could be further refined.
 
 ## Is there anything that you implemented but doesn't currently work? 
-  Teni- Not currently 
-  Courtney - Not that I know of!
-  Anusha - Not that I know of
+  - Teni- Not currently
+  - Courtney - Not that I know of!
+  - Anusha - Not that I know of
 
 ## What commands are needed to compile and run your code from the command line
 There is a script.sh file in the development branch that needs to be implemented for the code to execute through this file
