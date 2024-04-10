@@ -15,7 +15,7 @@ class BankAccountTests {
     }
     
     //construct tests
-	@Test
+    @Test
     void testConstructor() {
         BankAccount testAccount = new BankAccount();
         assertEquals(0.0, testAccount.getBalance(), 0.01);
@@ -88,7 +88,7 @@ class BankAccountTests {
 		assertEquals(25.0, testAccount.getBalance(), 0.01);	
 	}
 	
-	@Test
+    @Test
 	void testNegativeDeposit() {
     // 1. Setup Objects    
     BankAccount testAccount = new BankAccount();
