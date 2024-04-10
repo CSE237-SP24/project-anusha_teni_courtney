@@ -14,7 +14,7 @@ The Bank Application is designed to manage user accounts effectively. It allows 
 ## Code Structure
 - `BankAccount.java`: Defines the bank account model, including balance, account type, interest rate, and transaction history.
 - `Menu.java`: Handles user interactions, allowing them to create accounts, deposit and withdraw funds, and view transaction history.
-- - `Transaction.java`: Represents a transaction with a type (deposit, withdrawal, transfer), amount, and timestamp
+- `Transaction.java`: Represents a transaction with a type (deposit, withdrawal, transfer), amount, and timestamp
 
 ## Test Functionality
 - `BankAccountTests.java`: Tests the functionality of the `BankAccount` class, including constructors, deposits, and withdrawals.
