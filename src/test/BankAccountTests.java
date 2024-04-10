@@ -9,10 +9,11 @@ import bankapp.BankAccount;
 class BankAccountTests {
     private BankAccount testAccount1; // Setup Objects
 
-	@BeforeEach //for pre init objs
+    @BeforeEach //for pre init objs
     void ogBank() {
         testAccount1 = new BankAccount(100);//starting w 100 here
     }
+    
     //construct tests
 	@Test
     void testConstructor() {
@@ -25,6 +26,7 @@ class BankAccountTests {
         BankAccount testAccount = new BankAccount(100);
         assertEquals(100.0, testAccount.getBalance(), 0.01);
     }
+    
     @Test
     void testSimpleWithdrawal() {
 		//2. Call the method being tested
@@ -32,6 +34,7 @@ class BankAccountTests {
 		//3. Use assertions to verify results
         assertEquals(50.0, testAccount1.getBalance(), 0.01);
     }
+    
     @Test
     void testWithdrawalWithInsufficientFunds() {
        try {
@@ -41,7 +44,8 @@ class BankAccountTests {
 			  assertEquals("Not enough money", e.getMessage()); //if caught
         }
     }
-	@Test
+	
+    @Test
     void testWithdrawalWithNegativeAmount() {
         try {
             testAccount1.withdraw(-50); // try to withdraw a negative amount
@@ -50,6 +54,7 @@ class BankAccountTests {
             assertEquals("Withdrawal amount cannot be negative", e.getMessage());
         }
     }
+    
     @Test
     void testWithdrawalZero() {
         try {
@@ -68,6 +73,7 @@ class BankAccountTests {
         } catch (IllegalArgumentException e) {
             fail("Unexpected IllegalArgumentException was thrown");
         }
+   
     //deposit tests
 	@Test
 	void testSimpleDeposit() {

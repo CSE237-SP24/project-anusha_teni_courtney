@@ -18,7 +18,8 @@ class MenuTests {
         BankAccount account = m.getAccount();
         assertEquals(50, account.getBalance(), 0.01);
     }
-	@Test
+    
+    @Test
     void testProcessingUserSelection_Deposit() {
         Menu m = new Menu();
         
@@ -34,6 +35,7 @@ class MenuTests {
         assertEquals("Deposit", transaction.getType()); //is deposit 
         assertEquals(100, transaction.getAmount(), 0.01); //confirming amt above
     }
+    
     @Test
     void testProcessingWithdrawal() {
         Menu m = new Menu();
