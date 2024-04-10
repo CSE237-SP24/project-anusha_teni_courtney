@@ -46,9 +46,9 @@ The Bank Application is designed to manage user accounts effectively. It allows 
 ## What commands are needed to compile and run your code from the command line
 There is a script.sh file in the development branch that needs to be implemented for the code to execute through this file
 
-### Future Automation of Script:
+## Future Automation of Script:
 
-## Future Installation and Usage
+### Future Installation and Usage
 
 Navigate to the project's source directory and compile the Java files using:
 
