@@ -77,14 +77,9 @@ chmod +x run.sh
 
 
 
-Iteration 1 Information:
-## Introduction
+### Iteration 1 Information:
 
-This Bank Account Management System is designed to provide a simple simulation of a banking environment. It enables customers to create bank accounts, both checking and savings that are password protected, and manage their finances by depositing and withdrawing funds. For savings accounts, customers can also view their annual interest rate and the calculated interest on their balance.
-
-## Features and User Stories
-
-### Completed in This Iteration:
+## Completed in This Iteration:
 
 - **Account Creation**: Customers can now create a bank account, which can be either a checking or a savings account, each with a unique account number. (Anusha/Teni)
 - **Deposit Funds**: Functionality to deposit money into accounts has been provided. This allows customers to increase their account balances by the specified amounts. (starter code + Courtney)
@@ -92,7 +87,7 @@ This Bank Account Management System is designed to provide a simple simulation o
 - **Withdraw Funds**: Customers can withdraw money from their accounts, given that they have sufficient funds available. (Courtney)
 - **Interest Calculation**: Savings account holders can view the annual interest rate applicable to their accounts and calculate the interest based on their current balance. (Anusha)
 
-### Planned for Next Iteration:
+## Planned for Next Iteration:
 
 - Implementing funds transfer between accounts. (Courtney)
 - Introducing monthly statements that summarize account activity. (Anusha)
