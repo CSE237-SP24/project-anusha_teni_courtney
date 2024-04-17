@@ -56,6 +56,28 @@ class MenuTests {
         assertEquals(testDateTime, lastTransaction.getTimestamp());
     }
 
+    Test
+    void testTransferFunctionality() {
+        double transferAmount = 50.0;
+
+        sourceAccount.transferTo(targetAccount, transferAmount);
+
+        // Check if the transfer was successful
+        assertEquals(150.0, sourceAccount.getBalance(), "Source balance should be reduced by the transfer amount.");
+        assertEquals(150.0, targetAccount.getBalance(), "Target balance should be increased by the transfer amount.");
+
+        // Check if transactions are recorded correctly
+        assertFalse(sourceAccount.getTransactionHistory().isEmpty(), "Source should have recorded the transaction.");
+        assertFalse(targetAccount.getTransactionHistory().isEmpty(), "Target should have recorded the transaction.");
+
+        // Check the transaction details
+        String sourceTransactionDetail = sourceAccount.getTransactionHistory().get(sourceAccount.getTransactionHistory().size() - 1);
+        String targetTransactionDetail = targetAccount.getTransactionHistory().get(targetAccount.getTransactionHistory().size() - 1);
+
+        assertTrue(sourceTransactionDetail.contains("Transferred out: $" + transferAmount), "Source transaction details should indicate money was transferred out.");
+        assertTrue(targetTransactionDetail.contains("Transferred in: $" + transferAmount), "Target transaction details should indicate money was transferred in.");
+    }
+
     @Test
     void testDisplayTransactionHistory() {
         menu.processingDepositSelection(50);
