@@ -13,6 +13,7 @@ public class Menu {
     private BankAccount account;
     private List<Transaction> transactionHistory; 
     private Supplier<LocalDateTime> dateTimeSupplier;
+	private double balance;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -52,7 +53,7 @@ public class Menu {
     }
 
     public void displayAccountCreationPrompt() {
-        System.out.println("Welcome to A-Bank. To create an account enter your first and last name: ");
+        System.out.println("Welcome to our Bank. To create an account enter your first and last name: ");
     }
 
     public void displayPasswordCreationPrompt() {
@@ -158,23 +159,23 @@ public class Menu {
         return this.transactionHistory;
     }
 
-    public void transferTo(BankAccount targetAccount, double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Transfer amount must be positive.");
-        }
-
-        if (this.balance >= amount) 
-        {
-            this.balance -= amount; // Deduct the transfer amount from current account
-            targetAccount.balance += amount; // Add the transfer amount to the target account
-
-            this.recordTransaction("Transferred out: $" + amount);
-            targetAccount.recordTransaction("Transferred in: $" + amount);
-        } 
-        else {
-            throw new IllegalArgumentException("Insufficient funds for transfer.");
-        }
-    }
+//    public void transferTo(BankAccount targetAccount, double amount) {
+//        if (amount <= 0) {
+//            throw new IllegalArgumentException("Transfer amount must be positive.");
+//        }
+//
+//        if (this.balance >= amount) 
+//        {
+//            this.balance -= amount; // Deduct the transfer amount from current account
+//            targetAccount.balance += amount; // Add the transfer amount to the target account
+//
+//            this.recordTransaction("Transferred out: $" + amount);
+//            targetAccount.recordTransaction("Transferred in: $" + amount);
+//        } 
+//        else {
+//            throw new IllegalArgumentException("Insufficient funds for transfer.");
+//        }
+//    }
 
     public String getTransactionHistoryAsString() {
         StringBuilder sb = new StringBuilder();
