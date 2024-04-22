@@ -57,7 +57,7 @@ public class Menu {
     }
 
     public void displayAccountCreationPrompt() {
-        System.out.println("Welcome to our Bank. To create an account enter your first and last name: ");
+        System.out.println("Welcome to Penguin Bank. To create an account enter your first and last name: ");
     }
 
     public void displayPasswordCreationPrompt() {
@@ -87,8 +87,12 @@ public class Menu {
     }
 
     public char getValidAccountType() {
-        char x = in.nextLine().charAt(0);
-        return x;
+        char aType = in.nextLine().charAt(0);
+        while (aType != 'C' || 'S') {
+            System.out.println("Make sure to enter a C or S");
+            aType = in.nextChar();
+        }
+        return aType;
     }
 
     public double processInterestSRate(char accountType) {
