@@ -26,7 +26,7 @@ public class Menu {
         String password = mainMenu.getValidPassword();
         mainMenu.displayAccountTypePrompt();
         char accountType = mainMenu.getValidAccountType();
-        double rate = mainMenu.processInterestRate(accountType);
+        double rate = mainMenu.processInterestSRate(accountType);
 
         mainMenu.processingAccountDetails(userName, password, accountType, rate);
 
@@ -40,8 +40,12 @@ public class Menu {
         double amountW = mainMenu.getValidWithdrawalInput();
         mainMenu.processingWithdrawalSelection(amountW);
 
-        mainMenu.displayTransactionHistory();
+        //credit card
+        mainMenu.creditCardPrompt();
+        mainMenu.getValidCCInput();
+        mainMenu.processingCC();
 
+        mainMenu.displayTransactionHistory();
         scanner.close();
     }
 
@@ -87,10 +91,10 @@ public class Menu {
         return x;
     }
 
-    public double processInterestRate(char accountType) {
+    public double processInterestSRate(char accountType) {
         if (accountType == 'S') {
-            account.setRandomInterestRate();
-            return account.getInterestRate();
+            account.setRandomSavingsInterestRate();
+            return account.getInterestSRate();
         }
         return 0.0;
     }
@@ -159,6 +163,27 @@ public class Menu {
         return this.transactionHistory;
     }
 
+    //credit card
+    public void creditCardPromptPrompt() {
+        System.out.println("Would you like to open a Credit Card? Type Y for yes or N for no.");
+    }
+
+    public void getValidCCInput() {
+        char yesno = in.nextChar();
+        in.nextChar();
+        System.out.println("Your monthly interest rate will range from 10 to 18%, depending on your balance.")
+        System.out.println("Your credit limit will be 80% of your account balance.")
+       
+    }
+
+    //need test
+    public void processingCC(){
+        System.out.println("Calculating Interest Rate...")
+        int r = account.setCCInterestRate();
+        System.out.println("Rate is " + r + "%.");
+        double availCC = 0.8 * balance; 
+        System.out.println("Monthly Credit Limit is $" + availCC);
+    }
 //    public void transferTo(BankAccount targetAccount, double amount) {
 //        if (amount <= 0) {
 //            throw new IllegalArgumentException("Transfer amount must be positive.");
