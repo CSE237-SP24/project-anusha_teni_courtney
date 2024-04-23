@@ -46,13 +46,13 @@ public class BankAccount {
     public void setCCInterestRate() {
         Random rand = new Random();
         int rate = 0; 
-        if(account.balance > 500){
+        if (balance >= 500){
             rate = rand.nextInt(13 - 10 + 1) + 10;
         }
-        else if(account.balance > 300){
+        else if (balance >= 300){
             rate = rand.nextInt(16 - 13 + 1) + 13;
         }
-        else{
+        else {
             rate = rand.nextInt(18 - 16 + 1) + 16;
         }
         this.interestCCRate = rate;
@@ -86,7 +86,7 @@ public class BankAccount {
     }
 
     public double calculateAnnualInterest() {
-        return balance * interestRate / 100;
+        return balance * interestSRate / 100;
     }
 
     public boolean validatePassword(String inputPassword) {

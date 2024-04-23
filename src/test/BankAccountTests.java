@@ -91,4 +91,20 @@ class BankAccountTests {
         testAccount1.setBalance(50);
         assertEquals(50.0, testAccount1.getBalance(), 0.01);
     }
+
+    @Test
+    void testsetCCInterestRate(){
+        testAccount1.setBalance(500);
+        testAccount1.setCCInterestRate();
+        assertEquals(13, testAccount1.getCCInterestRate(),3);
+
+        testAccount1.setBalance(300);
+        testAccount1.setCCInterestRate();
+        assertEquals(16, testAccount1.getCCInterestRate(),3);
+
+        testAccount1.setBalance(100);
+        testAccount1.setCCInterestRate();
+        assertEquals(18, testAccount1.getCCInterestRate(),3);
+
+    }
 }

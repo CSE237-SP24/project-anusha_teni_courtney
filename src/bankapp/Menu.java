@@ -43,7 +43,7 @@ public class Menu {
         //credit card
         mainMenu.creditCardPrompt();
         mainMenu.getValidCCInput();
-        mainMenu.processingCC();
+        //mainMenu.processingCC();
 
         mainMenu.displayTransactionHistory();
         scanner.close();
@@ -88,9 +88,11 @@ public class Menu {
 
     public char getValidAccountType() {
         char aType = in.nextLine().charAt(0);
-        while (aType != 'C' || 'S') {
+        while (aType != 'C' && aType != 'S') {
             System.out.println("Make sure to enter a C or S");
-            aType = in.nextChar();
+            aType = in.nextLine().charAt(0);
+            System.out.println(aType + " !");
+
         }
         return aType;
     }
@@ -168,24 +170,26 @@ public class Menu {
     }
 
     //credit card
-    public void creditCardPromptPrompt() {
+    public void creditCardPrompt() {
         System.out.println("Would you like to open a Credit Card? Type Y for yes or N for no.");
     }
 
     public void getValidCCInput() {
-        char yesno = in.nextChar();
-        in.nextChar();
-        System.out.println("Your monthly interest rate will range from 10 to 18%, depending on your balance.")
-        System.out.println("Your credit limit will be 80% of your account balance.")
-       
+        char yesno = in.nextLine().charAt(0);
+        if(yesno == 'Y'){
+            System.out.println("Your monthly interest rate will range from 10 to 18%, depending on your balance.");
+            System.out.println("Your credit limit will be 80% of your account balance.");
+            processingCC();
+        }
+        
     }
 
-    //need test
     public void processingCC(){
-        System.out.println("Calculating Interest Rate...")
-        int r = account.setCCInterestRate();
+        System.out.println("Calculating Interest Rate...");
+        account.setCCInterestRate();
+        int r = account.getCCInterestRate();
         System.out.println("Rate is " + r + "%.");
-        double availCC = 0.8 * balance; 
+        double availCC = 0.8 * account.getBalance(); 
         System.out.println("Monthly Credit Limit is $" + availCC);
     }
 //    public void transferTo(BankAccount targetAccount, double amount) {
