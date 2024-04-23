@@ -7,7 +7,8 @@ public class BankAccount {
     private String userName; 
     private String password;
     private List<String> transactionHistory;
-    private double interestRate; // Annual interest rate
+    private double interestSRate; // Annual interest rate
+    private int interestCCRate;
     private char accountType;
 
     public BankAccount() {
@@ -31,17 +32,31 @@ public class BankAccount {
         this.balance = b; 
     }
 
-    // Randomly sets the interest rate between 4% and 7%
-    public void setRandomInterestRate() {
+    // Randomly sets the Savings Account interest rate between 4% and 7%
+    public void setRandomSavingsInterestRate() {
         Random rand = new Random();
         int max = 7, min = 4;
-        this.interestRate = rand.nextInt(max - min + 1) + min;
+        this.interestSRate = rand.nextInt(max - min + 1) + min;
     }
 
     public void setAccountType(char x) {
         this.accountType = x; 
     }
 
+    public void setCCInterestRate() {
+        Random rand = new Random();
+        int rate = 0; 
+        if (balance >= 500){
+            rate = rand.nextInt(13 - 10 + 1) + 10;
+        }
+        else if (balance >= 300){
+            rate = rand.nextInt(16 - 13 + 1) + 13;
+        }
+        else {
+            rate = rand.nextInt(18 - 16 + 1) + 16;
+        }
+        this.interestCCRate = rate;
+    }
     // Getters
     public String getUserName() {
         return this.userName; 
@@ -55,10 +70,13 @@ public class BankAccount {
         return this.balance;
     }
 
-    public double getInterestRate() {
-        return this.interestRate;
+    public double getInterestSRate() {
+        return this.interestSRate;
     }
 
+    public int getCCInterestRate(){
+        return this.interestCCRate;
+    }
     public char getAccountType() {
         return this.accountType; 
     }
@@ -68,7 +86,7 @@ public class BankAccount {
     }
 
     public double calculateAnnualInterest() {
-        return balance * interestRate / 100;
+        return balance * interestSRate / 100;
     }
 
     public boolean validatePassword(String inputPassword) {

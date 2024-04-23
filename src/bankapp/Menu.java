@@ -26,7 +26,7 @@ public class Menu {
         String password = mainMenu.getValidPassword();
         mainMenu.displayAccountTypePrompt();
         char accountType = mainMenu.getValidAccountType();
-        double rate = mainMenu.processInterestRate(accountType);
+        double rate = mainMenu.processInterestSRate(accountType);
 
         mainMenu.processingAccountDetails(userName, password, accountType, rate);
 
@@ -40,8 +40,12 @@ public class Menu {
         double amountW = mainMenu.getValidWithdrawalInput();
         mainMenu.processingWithdrawalSelection(amountW);
 
-        mainMenu.displayTransactionHistory();
+        //credit card
+        mainMenu.creditCardPrompt();
+        mainMenu.getValidCCInput();
+        //mainMenu.processingCC();
 
+        mainMenu.displayTransactionHistory();
         scanner.close();
     }
 
@@ -53,7 +57,7 @@ public class Menu {
     }
 
     public void displayAccountCreationPrompt() {
-        System.out.println("Welcome to our Bank. To create an account enter your first and last name: ");
+        System.out.println("Welcome to Penguin Bank. To create an account enter your first and last name: ");
     }
 
     public void displayPasswordCreationPrompt() {
@@ -83,14 +87,20 @@ public class Menu {
     }
 
     public char getValidAccountType() {
-        char x = in.nextLine().charAt(0);
-        return x;
+        char aType = in.nextLine().charAt(0);
+        while (aType != 'C' && aType != 'S') {
+            System.out.println("Make sure to enter a C or S");
+            aType = in.nextLine().charAt(0);
+            System.out.println(aType + " !");
+
+        }
+        return aType;
     }
 
-    public double processInterestRate(char accountType) {
+    public double processInterestSRate(char accountType) {
         if (accountType == 'S') {
-            account.setRandomInterestRate();
-            return account.getInterestRate();
+            account.setRandomSavingsInterestRate();
+            return account.getInterestSRate();
         }
         return 0.0;
     }
@@ -159,23 +169,30 @@ public class Menu {
         return this.transactionHistory;
     }
 
-//    public void transferTo(BankAccount targetAccount, double amount) {
-//        if (amount <= 0) {
-//            throw new IllegalArgumentException("Transfer amount must be positive.");
-//        }
-//
-//        if (this.balance >= amount) 
-//        {
-//            this.balance -= amount; // Deduct the transfer amount from current account
-//            targetAccount.balance += amount; // Add the transfer amount to the target account
-//
-//            this.recordTransaction("Transferred out: $" + amount);
-//            targetAccount.recordTransaction("Transferred in: $" + amount);
-//        } 
-//        else {
-//            throw new IllegalArgumentException("Insufficient funds for transfer.");
-//        }
-//    }
+    //credit card
+    public void creditCardPrompt() {
+        System.out.println("Would you like to open a Credit Card? Type Y for yes or N for no.");
+    }
+
+    public void getValidCCInput() {
+        char yesno = in.nextLine().charAt(0);
+        if(yesno == 'Y'){
+            System.out.println("Your monthly interest rate will range from 10 to 18%, depending on your balance.");
+            System.out.println("Your credit limit will be 80% of your account balance.");
+            processingCC();
+        }
+        
+    }
+
+    public void processingCC(){
+        System.out.println("Calculating Interest Rate...");
+        account.setCCInterestRate();
+        int r = account.getCCInterestRate();
+        System.out.println("Rate is " + r + "%.");
+        double availCC = 0.8 * account.getBalance(); 
+        System.out.println("Monthly Credit Limit is $" + availCC);
+    }
+
 
     public String getTransactionHistoryAsString() {
         StringBuilder sb = new StringBuilder();
