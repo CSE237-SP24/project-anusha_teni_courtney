@@ -109,21 +109,22 @@ class BankAccountTests {
     }
     @Test
     void testLowBalanceAlert_SetBelowThreshold() {
-        testAccount1.setLowBalanceThreshold(50); 
-        assertFalse(testAccount1.isLowBalanceAlert()); //not a low balance
-      
-        testAccount1.withdraw(60);
-        assertTrue(testAccount1.isLowBalanceAlert()); //now is a low balance
+        testAccount1.setLowBalanceThreshold(110);
+        assertEquals(true, testAccount1.checkLowBalanceAlert(), "Should alert low balance because balance is below threshold.");
+
+        testAccount1.deposit(20);
+        assertEquals(false, testAccount1.checkLowBalanceAlert(), "Should not alert low balance because balance is now above threshold.");
     }
+
     @Test
     void testLowBalanceAlert_ResetAboveThreshold() {
-        testAccount1.setLowBalanceThreshold(50); 
-        assertFalse(testAccount1.isLowBalanceAlert()); 
-        
-        testAccount1.withdraw(60);
-        assertTrue(testAccount1.isLowBalanceAlert()); 
-        
-        testAccount1.deposit(20);//add back
-        assertFalse(testAccount1.isLowBalanceAlert()); //reset
+        testAccount1.setLowBalanceThreshold(80);
+        assertEquals(false, testAccount1.checkLowBalanceAlert(), "Should not alert low balance because balance is above threshold.");
+
+        testAccount1.withdraw(30);
+        assertEquals(true, testAccount1.checkLowBalanceAlert(), "Should alert low balance because balance is below threshold.");
+
+        testAccount1.deposit(40);
+        assertEquals(false, testAccount1.checkLowBalanceAlert(), "Should not alert low balance because balance is now above threshold.");
     }
 }

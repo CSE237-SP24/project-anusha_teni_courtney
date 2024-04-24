@@ -103,11 +103,15 @@ public class BankAccount {
     public void recordTransaction(String transactionDetail) {
         transactionHistory.add(transactionDetail);
     }
-    public void checkLowBalanceAlert() {
+    
+    public boolean checkLowBalanceAlert() {
         if (balance < lowBalanceThreshold) {
             System.out.println("Low balance alert! Your balance is below the threshold.");
+            return true;
+        }
+        return false;
     }
-}
+    
     //deposit and withdraw--TRANSACTIONS
     public void deposit(double amount) {
         if(amount < 0) {

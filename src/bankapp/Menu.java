@@ -3,6 +3,7 @@ package bankapp;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Supplier;
@@ -39,6 +40,9 @@ public class Menu {
         mainMenu.withdrawPrompt();
         double amountW = mainMenu.getValidWithdrawalInput();
         mainMenu.processingWithdrawalSelection(amountW);
+        
+     // Account updates
+        mainMenu.promptForAccountUpdate();
 
         //credit card
         mainMenu.creditCardPrompt();
@@ -49,6 +53,10 @@ public class Menu {
 
         //low balance threshold
         mainMenu.setLowBalanceThreshold();
+        
+        // Prompt for transferring funds
+        mainMenu.promptForTransfer();
+        
 
         scanner.close();
     }
@@ -130,6 +138,41 @@ public class Menu {
         }
         return amount;
     }
+    
+    public void promptForAccountUpdate() {
+        System.out.println("Would you like to update your account details? (yes/no)");
+        String response = in.nextLine().trim().toLowerCase();
+
+        if (response.equals("yes")) {
+            updateAccountDetails();
+        } else {
+            System.out.println("No updates made.");
+        }
+    }
+
+    private void updateAccountDetails() {
+        System.out.println("Select option to update: 1 for Username, 2 for Password");
+        int choice = in.nextInt();
+        in.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter new username:");
+                String newUsername = in.nextLine();
+                account.setUserName(newUsername);
+                System.out.println("Username updated successfully to " + newUsername);
+                break;
+            case 2:
+                System.out.println("Enter new password:");
+                String newPassword = in.nextLine();
+                account.setPassword(newPassword);
+                System.out.println("Password updated successfully.");
+                break;
+            default:
+                System.out.println("Invalid option selected.");
+                break;
+        }
+    }
 
     public void processingDepositSelection(double amount) {
         account.deposit(amount);
@@ -180,7 +223,7 @@ public class Menu {
     }
     //credit card
     public void creditCardPrompt() {
-        System.out.println("Would you like to open a Credit Card? Type Y for yes or N for no.");
+        System.out.println("Would you like to open a Credit Card? (yes/no)");
     }
 
     public void getValidCCInput() {
@@ -200,6 +243,54 @@ public class Menu {
         System.out.println("Rate is " + r + "%.");
         double availCC = 0.8 * account.getBalance(); 
         System.out.println("Monthly Credit Limit is $" + availCC);
+    }
+
+    public void promptForTransfer() {
+        System.out.println("Would you like to transfer money to another account? (yes/no)");
+        
+        if (in.hasNextLine()) {
+            in.nextLine();
+        }
+
+        String response = in.nextLine().trim().toLowerCase();
+        System.out.println("You entered: " + response);
+
+        if (response.equals("yes")) {
+            System.out.print("Enter the amount to transfer: ");
+            while (!in.hasNextDouble()) { // Ensure the input is a double
+                System.out.println("Please enter a valid amount.");
+                in.next(); 
+            }
+            double amount = in.nextDouble();
+            in.nextLine();
+
+            System.out.print("Enter the username of the account you want to transfer to: ");
+            String targetUserName = in.nextLine().trim();
+            System.out.println("Transferring to: " + targetUserName);
+
+            Random rand = new Random();
+            int result = rand.nextInt(5) + 1; // Generates a number between 1 and 5
+
+            if (result <= 3) {
+                // Simulate success for 1, 2, 3
+                if (this.account.getBalance() >= amount) {
+                    this.account.setBalance(this.account.getBalance() - amount); // Deduct amount from this account
+                    
+                    BankAccount targetAccount = new BankAccount();
+                    targetAccount.setBalance(targetAccount.getBalance() + amount); // Add amount to target account
+                    System.out.println("Successfully transferred $" + amount + " to " + targetUserName + ".");
+                    transactionHistory.add(new Transaction("Transfer", amount, dateTimeSupplier.get()));
+                } else {
+                    System.out.println("Transfer failed: Insufficient funds.");
+                }
+            } else { 
+                // Simulate failure for 4, 5
+                System.out.println("Transfer failed: Incorrect account username provided.");
+            }
+        } 
+        else {
+            System.out.println("Transfer cancelled.");
+        }
     }
 
 
