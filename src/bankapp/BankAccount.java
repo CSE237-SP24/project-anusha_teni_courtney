@@ -10,6 +10,7 @@ public class BankAccount {
     private double interestSRate; // Annual interest rate
     private int interestCCRate;
     private char accountType;
+    
 
     public BankAccount() {
         this.userName = "";
