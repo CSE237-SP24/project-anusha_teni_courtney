@@ -19,7 +19,7 @@ public class BankAccount {
         this.password = "";
         this.balance = 0;
         this.accountType = 'C';
-        this.transactionHistory = new ArrayList<Transaction>();
+        this.transactionHistory = new ArrayList<String>();
     }
     
     // Setters
