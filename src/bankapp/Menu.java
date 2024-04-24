@@ -69,7 +69,7 @@ public class Menu {
     }
 
     public void displayAccountCreationPrompt() {
-        System.out.println("Welcome to Penguin Bank. To create an account enter your first and last name: ");
+        System.out.println("Welcome to TCA Bank. To create an account enter your first and last name: ");
     }
 
     public void displayPasswordCreationPrompt() {
