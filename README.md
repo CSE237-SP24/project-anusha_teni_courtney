@@ -1,5 +1,62 @@
 # Bank Account Management System
-## Iteration 2 
+## Iteration 3
+
+BankApp is an application designed to simulate various banking operations such as account creation, fund transfers, deposit and withdrawal transactions, and credit card management. This application provides a user-friendly interface via the console, allowing users to interact with their virtual bank account.
+
+## Features
+
+- **Account Creation**: Users can create a bank account by providing their name, password, and selecting an account type (Checking or Savings).
+- **Deposit and Withdrawal**: Users can deposit and withdraw funds. Each transaction is recorded with its details.
+- **Fund Transfers**: Users can transfer funds between accounts. The application includes a simulation of transfer success based on random outcomes.
+- **Credit Card Management**: Users can request a credit card which calculates a monthly interest rate and credit limit based on the account balance.
+- **View Transaction History**: Users can view a detailed list of all transactions, including deposits, withdrawals, and transfers.
+- **Set Low Balance Alert**: Users can set a low balance threshold that triggers an alert when the account balance goes below a specified amount.
+- **Account Updates**: Users can update their account details such as username and password.
+
+## Code Structure
+- `BankAccount.java`: Defines the bank account model, including balance, account type, interest rate, and transaction history.
+- `Menu.java`: Handles user interactions, allowing them to create accounts, deposit and withdraw funds, and view transaction history.
+- `Transaction.java`: Represents a transaction with a type (deposit, withdrawal, transfer), amount, and timestamp
+
+## Test Functionality
+- `BankAccountTests.java`: Tests the functionality of the `BankAccount` class, including constructors, deposits, and withdrawals.
+- `MenuTests.java`: Tests the `Menu` class's ability to process deposits, withdrawals, and display transaction history.
+- `TransactionTests.java`: Verifies the creation of transactions and their properties.
+
+## Compilation and Execution Instructions
+
+Before running the application, ensure Java is installed on your system. You can verify this by running `java -version` in your command line interface.
+
+### Steps to Compile and Run the Application:
+
+1. **Clone the Repository**:
+   If you have Git installed, you can clone the repository using:
+   ```sh
+   git clone [repository-url]
+   cd [repository-name]
+   ```
+
+2. **Compile the Java Files**:
+   Navigate to the source directory (assuming it is the root), and compile the Java files using:
+   ```sh
+   javac bankapp/Menu.java bankapp/BankAccount.java bankapp/Transaction.java (for the Transaction class for example)
+   ```
+
+3. **Run the Application**:
+   After compiling, you can run the application by executing:
+   ```sh
+   java bankapp.Menu
+   ```
+## Conclusion
+
+BankApp provides a simulation of a banking system, allowing users to engage with various financial operations through a simple console interface. This application is ideal for educational purposes or as a base for more complex banking software development projects.
+
+
+
+
+
+
+## Iteration 2 Information: 
 
 ## Description
 The Bank Application is designed to manage user accounts effectively. It allows users to create an account, perform deposits and withdrawals, view transaction history, and transfer funds between accounts. The application also assigns an interest rate to savings accounts.
