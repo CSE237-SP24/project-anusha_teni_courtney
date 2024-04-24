@@ -46,6 +46,10 @@ public class Menu {
         //mainMenu.processingCC();
 
         mainMenu.displayTransactionHistory();
+
+        //low balance threshold
+        mainMenu.setLowBalanceThreshold();
+
         scanner.close();
     }
 
@@ -53,7 +57,7 @@ public class Menu {
         this.in = scanner;
         this.dateTimeSupplier = dateTimeSupplier;
         this.account = new BankAccount();
-        this.transactionHistory = new ArrayList<>();
+        this.transactionHistory = new ArrayList<Transaction>();
     }
 
     public void displayAccountCreationPrompt() {
@@ -168,7 +172,12 @@ public class Menu {
     public List<Transaction> getTransactionHistory() {
         return this.transactionHistory;
     }
-
+    public void setLowBalanceThreshold() {
+        System.out.println("Enter the low balance threshold for the account:");
+        double threshold = in.nextDouble();
+        account.setLowBalanceThreshold(threshold);
+        System.out.println("Low balance threshold set successfully.");
+    }
     //credit card
     public void creditCardPrompt() {
         System.out.println("Would you like to open a Credit Card? Type Y for yes or N for no.");

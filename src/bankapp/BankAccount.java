@@ -10,6 +10,8 @@ public class BankAccount {
     private double interestSRate; // Annual interest rate
     private int interestCCRate;
     private char accountType;
+    private double lowBalanceThreshold;
+
     
 
     public BankAccount() {
@@ -58,6 +60,10 @@ public class BankAccount {
         }
         this.interestCCRate = rate;
     }
+    public void setLowBalanceThreshold(double threshold) {
+        this.lowBalanceThreshold = threshold;
+    }
+
     // Getters
     public String getUserName() {
         return this.userName; 
@@ -97,13 +103,19 @@ public class BankAccount {
     public void recordTransaction(String transactionDetail) {
         transactionHistory.add(transactionDetail);
     }
-
+    public void checkLowBalanceAlert() {
+        if (balance < lowBalanceThreshold) {
+            System.out.println("Low balance alert! Your balance is below the threshold.");
+    }
+}
+    //deposit and withdraw--TRANSACTIONS
     public void deposit(double amount) {
         if(amount < 0) {
             throw new IllegalArgumentException("Amount must be positive");
         }
         this.balance += amount;
         recordTransaction("Deposited: $" + amount);
+        checkLowBalanceAlert();
     }
 
     public void withdraw(double amount) {
@@ -113,6 +125,7 @@ public class BankAccount {
         if(balance >= amount) {
             balance -= amount;
             recordTransaction("Withdrew: $" + amount);
+            checkLowBalanceAlert();
         } else {
             throw new IllegalArgumentException("Insufficient funds");
         }

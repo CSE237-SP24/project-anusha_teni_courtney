@@ -107,4 +107,23 @@ class BankAccountTests {
         assertEquals(18, testAccount1.getCCInterestRate(),3);
 
     }
+    @Test
+    void testLowBalanceAlert_SetBelowThreshold() {
+        testAccount1.setLowBalanceThreshold(50); 
+        assertFalse(testAccount1.isLowBalanceAlert()); //not a low balance
+      
+        testAccount1.withdraw(60);
+        assertTrue(testAccount1.isLowBalanceAlert()); //now is a low balance
+    }
+    @Test
+    void testLowBalanceAlert_ResetAboveThreshold() {
+        testAccount1.setLowBalanceThreshold(50); 
+        assertFalse(testAccount1.isLowBalanceAlert()); 
+        
+        testAccount1.withdraw(60);
+        assertTrue(testAccount1.isLowBalanceAlert()); 
+        
+        testAccount1.deposit(20);//add back
+        assertFalse(testAccount1.isLowBalanceAlert()); //reset
+    }
 }
